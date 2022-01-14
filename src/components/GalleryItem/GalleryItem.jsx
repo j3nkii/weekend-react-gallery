@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-function GalleryItem({item}){
+function GalleryItem({item, addLikes, fetchGalleryList}){
     console.log('in item', item);
 
     const [isClick, setIsClick] = useState(false)
@@ -9,12 +9,16 @@ function GalleryItem({item}){
         console.log('this is image', );
         setIsClick(!isClick)
     }
+    const onAddLikes = () => {
+        addLikes(item.likes + 1, item.id);
+        fetchGalleryList();
+    }
 
     return (
         <>
             <div className="gallery-item">
                     {isClick ? <p onClick={onImageClick}>{item.description}</p> : <img onClick={onImageClick} src={item.path} />}
-                    <button>love it!</button>
+                    <button onClick={onAddLikes}>love it!</button>
                     {item.likes > 0 
                         ? <p>{item.likes} people like this!</p> 
                         : <p>{item.likes} people like this :(</p>}
