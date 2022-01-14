@@ -2,7 +2,15 @@ const express = require('express');
 const router = express.Router();
 const galleryItems = require('../modules/gallery.data');
 
-// DO NOT MODIFY THIS FILE FOR BASE MODE
+const pg = require('pg');
+const Pool = pg.Pool;
+const pool = new Pool({
+    database: 'react_gallery',
+    host: 'localhost',
+    port: 5432,
+    max: 10,
+    idleTimeoutMillis: 30000 
+});
 
 // PUT Route
 router.put('/like/:id', (req, res) => {
@@ -18,7 +26,15 @@ router.put('/like/:id', (req, res) => {
 
 // GET Route
 router.get('/', (req, res) => {
-    res.send(galleryItems);
+    const sqlText = `
+        SELECT * FROM gallery ORDER BY likes ASC;
+    `
+    pool.query(sqlText).then((result) => {
+        console.log('data from DB', result);
+        res.send(result.rows)
+    }).catch((err) => {
+        console.log('Err Getting data', err);
+    })
 }); // END GET Route
 
 module.exports = router;

@@ -17,7 +17,7 @@ function GalleryItem({item, addLikes, fetchGalleryList}){
     return (
         <>
             <div className="gallery-item">
-                    {isClick ? <p onClick={onImageClick}>{item.description}</p> : <img onClick={onImageClick} src={item.path} />}
+                    {isClick ? <p onClick={onImageClick}>{item.description}</p> : <img onClick={onImageClick} src={item.path} height="200px" width="auto"/>}
                     <button onClick={onAddLikes}>love it!</button>
                     {item.likes > 0 
                         ? <p>{item.likes} people like this!</p> 
