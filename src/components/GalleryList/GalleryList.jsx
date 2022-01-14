@@ -1,15 +1,10 @@
+import GalleryItem from '../GalleryItem/GalleryItem'
+
 function GalleryList({galleryList, fetchGalleryList}){
     console.log(galleryList);
     return (
         <div>
-            {galleryList.map((item) => (
-                <div key={item.id} className="gallery-item">
-                    <img src={item.path} />
-                    <button>love it!</button>
-                    {item.likes > 0 
-                        ? <p>{item.likes} people like this!</p> 
-                        : <p>{item.likes} people like this :(</p>}
-                </div>
+            {galleryList.map((item) => ( <GalleryItem key={item.id} item={item}/>
             ))}
         </div>
     )
