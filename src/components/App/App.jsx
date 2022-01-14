@@ -22,12 +22,21 @@ function App() {
     })
   );
 
+  const addLikes = (data, id) => {
+    console.log('hitting likes', data);
+    axios.put(`/gallery/like/${id}`, data).then(res => {
+      console.log('PUTTING /gallery', res);
+    }).catch(err => {
+      console.log('ERR PUTING /gallery', err);
+    })
+  }
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
-        <GalleryList galleryList={galleryList} fetchGalleryList={fetchGalleryList}/>
+        <GalleryList addLikes={addLikes} galleryList={galleryList} fetchGalleryList={fetchGalleryList}/>
       </div>
     );
 }
