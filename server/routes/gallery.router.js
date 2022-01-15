@@ -2,23 +2,48 @@ const express = require('express');
 const router = express.Router();
 const galleryItems = require('../modules/gallery.data');
 
-// DO NOT MODIFY THIS FILE FOR BASE MODE
+const pg = require('pg');
+const Pool = pg.Pool;
+const pool = new Pool({
+    database: 'react_gallery',
+    host: 'localhost',
+    port: 5432,
+    max: 10,
+    idleTimeoutMillis: 30000 
+});
 
 // PUT Route
 router.put('/like/:id', (req, res) => {
-    console.log(req.params);
-    const galleryId = req.params.id;
-    for(const galleryItem of galleryItems) {
-        if(galleryItem.id == galleryId) {
-            galleryItem.likes += 1;
-        }
-    }
-    res.sendStatus(200);
+    console.log('***** INIT PUT *****');
+    console.log(req.params, req.body);
+    const sqlText = `
+        UPDATE gallery
+        SET likes = $1
+        WHERE id = $2
+    `
+    queryParams = [
+        req.body.likes,
+        req.params.id
+    ]
+    pool.query(sqlText, queryParams).then((dbRes) => {
+        res.sendStatus(201)
+        console.log('PUT Suceess, added likes');
+    }).catch((err) => {
+        console.log('ERR in likes', err);
+    })
 }); // END PUT Route
 
 // GET Route
 router.get('/', (req, res) => {
-    res.send(galleryItems);
+    const sqlText = `
+        SELECT * FROM gallery ORDER BY likes DESC;
+    `
+    pool.query(sqlText).then((result) => {
+        console.log('data from DB', result);
+        res.send(result.rows)
+    }).catch((err) => {
+        console.log('Err Getting data', err);
+    })
 }); // END GET Route
 
 module.exports = router;

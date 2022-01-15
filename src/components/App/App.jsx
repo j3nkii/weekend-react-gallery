@@ -13,19 +13,21 @@ function App() {
 
   const [galleryList, setGalleryList] = useState([]);
 
-  const fetchGalleryList = () => (
+  const fetchGalleryList = () => {
+    console.log('hitting FETCH');
     axios.get('/gallery').then(res => {
       console.log('GETTING /gallery', res.data);
       setGalleryList(res.data)
     }).catch(err => {
       console.log('ERR GETTING /gallery', err);
     })
-  );
+  };
 
   const addLikes = (data, id) => {
-    console.log('hitting likes', data);
-    axios.put(`/gallery/like/${id}`, data).then(res => {
+    console.log('hitting likes', );
+    axios.put(`/gallery/like/${id}`, {likes: data}).then(res => {
       console.log('PUTTING /gallery', res);
+      fetchGalleryList();
     }).catch(err => {
       console.log('ERR PUTING /gallery', err);
     })
