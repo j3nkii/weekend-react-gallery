@@ -20,17 +20,32 @@ function App() {
       console.log('GETTING /gallery', res.data);
       setGalleryList(res.data)
     }).catch(err => {
-      console.log('ERR GETTING /gallery', err);
+      console.error('ERR GETTING /gallery', err);
     })
   };
 
   const addLikes = (data, id) => {
     console.log('hitting likes', );
-    axios.put(`/gallery/like/${id}`, {likes: data}).then(res => {
+    axios.put(`/gallery/like/${id}`, {
+      likes: data
+    }).then(res => {
       console.log('PUTTING /gallery', res);
       fetchGalleryList();
     }).catch(err => {
-      console.log('ERR PUTING /gallery', err);
+      console.error('ERR PUTING /gallery', err);
+    })
+  }
+
+  const submitIMG = (url, desc) => {
+    console.log('hitting submit', url, desc);
+    axios.post('/gallery', {
+      path: url,
+      description: desc 
+    }).then(res => {
+      console.log('POST /gallery:', res);
+      fetchGalleryList();
+    }).catch(err => {
+      console.error('POST FAILED /gallery', err);
     })
   }
 
@@ -39,7 +54,7 @@ function App() {
         <header className="App-header">
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
-        <ImageForm />
+        <ImageForm submitIMG={submitIMG} />
         <GalleryList addLikes={addLikes} galleryList={galleryList} fetchGalleryList={fetchGalleryList}/>
       </div>
     );
