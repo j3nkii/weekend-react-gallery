@@ -8,6 +8,8 @@ function ImageForm({submitIMG}){
     const onSubmit = (evt) => {
         evt.preventDefault();
         submitIMG(imgURL, imgDESC);
+        setImgDESC('');
+        setImgURL('');
     }
 
     return (

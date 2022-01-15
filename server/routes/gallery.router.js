@@ -66,4 +66,17 @@ router.post('/', (req, res) => {
     })
 }); // END PUT Route
 
+router.delete('/:id', (req, res) => {
+    console.log('***** INIT DELETE *****');
+    const sqlText = `
+        DELETE FROM gallery
+        WHERE id = $1
+    `
+    pool.query(sqlText, [req.params.id]).then((dbRes) => {
+        res.sendStatus(201);
+    }).catch((err) => {
+        console.error('FAILED DELETE', err)
+    })
+});
+
 module.exports = router;

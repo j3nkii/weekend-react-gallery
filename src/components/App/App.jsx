@@ -49,13 +49,22 @@ function App() {
     })
   }
 
+  const removeIMG = (id) => {
+    axios.delete(`/gallery/${id}`).then(res => {
+      console.log('DELETE SUCC', res);
+      fetchGalleryList();
+    }).catch(err => {
+      console.log('ERR in Delete', err);
+    })
+  }
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
         <ImageForm submitIMG={submitIMG} />
-        <GalleryList addLikes={addLikes} galleryList={galleryList} fetchGalleryList={fetchGalleryList}/>
+        <GalleryList addLikes={addLikes} galleryList={galleryList} removeIMG={removeIMG}/>
       </div>
     );
 }
