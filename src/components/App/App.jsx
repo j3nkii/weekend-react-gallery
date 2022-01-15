@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from'axios';
 import GalleryList from '../GalleryList/GalleryList'
+import ImageForm from '../ImageForm/ImageForm'
 import './App.css';
 
 
@@ -38,6 +39,7 @@ function App() {
         <header className="App-header">
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
+        <ImageForm />
         <GalleryList addLikes={addLikes} galleryList={galleryList} fetchGalleryList={fetchGalleryList}/>
       </div>
     );
