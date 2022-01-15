@@ -46,4 +46,37 @@ router.get('/', (req, res) => {
     })
 }); // END GET Route
 
+router.post('/', (req, res) => {
+    console.log('***** INIT POST *****');
+    console.log(req.params, req.body);
+    const sqlText = `
+        INSERT INTO gallery
+            (path, description)
+        VALUES ($1, $2)
+    `
+    queryParams = [
+        req.body.path,
+        req.body.description
+    ]
+    pool.query(sqlText, queryParams).then((dbRes) => {
+        res.sendStatus(201)
+        console.log('POST Suceess, added likes');
+    }).catch((err) => {
+        console.log('ERR in POST', err);
+    })
+}); // END PUT Route
+
+router.delete('/:id', (req, res) => {
+    console.log('***** INIT DELETE *****');
+    const sqlText = `
+        DELETE FROM gallery
+        WHERE id = $1
+    `
+    pool.query(sqlText, [req.params.id]).then((dbRes) => {
+        res.sendStatus(201);
+    }).catch((err) => {
+        console.error('FAILED DELETE', err)
+    })
+});
+
 module.exports = router;
