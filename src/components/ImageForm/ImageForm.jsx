@@ -26,7 +26,7 @@ function ImageForm({submitIMG}){
                         value={imgURL}
                         type="text" 
                         label="URL"
-                        sx={{m: 1}}
+                        sx={{m: 1,  bgcolor: '#E9EBFF'}}
                     />
                     <TextField 
                         onChange={evt => setImgDESC(evt.target.value)}
@@ -34,10 +34,19 @@ function ImageForm({submitIMG}){
                         type="text" 
                         label ="Description" 
                         multiline rows={4} 
-                        sx={{m: 1}}
+                        sx={{m: 1, fontFamily: 'Monospace', bgcolor: '#E9EBFF'}}
                     />
                 <Button 
-                    sx={{m: 1}} 
+                    sx={{
+                        m: 1,
+                        fontFamily: 'Monospace',
+                        fontWeight: 'bold',
+                        color: '#000',
+                        bgcolor: '#17e1bb',
+                        '&:hover': {
+                            bgcolor: '#11b596'
+                        }
+                    }} 
                     type="submit"
                     variant="contained"
                 >

@@ -58,6 +58,9 @@ function GalleryItem({item, addLikes, removeIMG, index}){
                             bgcolor: '#ff7c93',
                             borderLeft: '1px solid black',
                             borderRight: '1px solid black',
+                            fontFamily: 'Monospace',
+                            fontWeight: 'bold',
+                            fontSize: 17,
                             '&:hover': {
                                 bgcolor: '#fd3f61'
                             }
@@ -69,14 +72,16 @@ function GalleryItem({item, addLikes, removeIMG, index}){
                         border={0}
                         size="small" 
                         variant="contained"
-                        onClick={onRemoveIMG} 
                         sx={{
                             width: '50%',
                             borderRadius: 0, 
                             bgcolor: '#ff5252',
                             borderRight: '1px solid black',
+                            fontFamily: 'Monospace',
+                            fontWeight: 'bold',
+                            fontSize: 17,
                             '&:hover': {
-                                bgcolor: '#ff3c3c'
+                                bgcolor: '#ff0000'
                             }
                         }} 
                     >
