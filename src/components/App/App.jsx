@@ -32,7 +32,7 @@ function App() {
       console.log('PUTTING /gallery', res);
       fetchGalleryList();
     }).catch(err => {
-      console.error('ERR PUTING /gallery', err);
+      console.error('ERR PUTTING /gallery', err);
     })
   }
 
@@ -61,7 +61,7 @@ function App() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Gallery of My Life</h1>
+          <h1 className="App-title">Gallery of Cute frickken goats</h1>
         </header>
         <ImageForm submitIMG={submitIMG} />
         <GalleryList addLikes={addLikes} galleryList={galleryList} removeIMG={removeIMG}/>
