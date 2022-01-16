@@ -39,12 +39,13 @@ function GalleryItem({item, addLikes, removeIMG, index}){
             <Stack key={index}>
                 {isClick 
                 ? <p onClick={onImageClick}>{item.description}</p>
-                : <img onClick={onImageClick}
-                    src={`${item.path}?w=160&auto=format`}
-                    srcSet={`${item.path}?w=160&auto=format&dpr=2 2x`}
-                    loading="lazy"
-                    style={{ borderTopLeftRadius: 9, borderTopRightRadius: 9, border: '1px solid black',}}
-                />}
+                : <img 
+                        onClick={onImageClick}
+                        src={`${item.path}?w=160&auto=format`}
+                        srcSet={`${item.path}?w=160&auto=format&dpr=2 2x`}
+                        loading="lazy"
+                        style={{ borderTopLeftRadius: 9, borderTopRightRadius: 9, border: '1px solid black',}}
+                    />}
                 <Box sx={{width: '100%'}}>
                     <Button
                     border={0}

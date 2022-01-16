@@ -4,15 +4,17 @@
 
 .App-header {
   background-color: #60a595;
-  padding: 1em;
+  padding: .5em;
   color: white;
   margin-bottom: 1em;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2em;
+  font-family: cursive;
 }
 
 body{
   font-family: Georgia, 'Times New Roman', Times, serif;
+  background-image: url("https://i.gifer.com/origin/10/103c30d1f212356e3b4601589fd58e2a_w200.gif");
 }

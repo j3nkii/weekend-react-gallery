@@ -42,7 +42,7 @@ function ImageForm({submitIMG}){
                         fontFamily: 'Monospace',
                         fontWeight: 'bold',
                         color: '#000',
-                        bgcolor: '#17e1bb',
+                        bgcolor: '#42ebcb',
                         '&:hover': {
                             bgcolor: '#11b596'
                         }
