@@ -2,7 +2,6 @@ import GalleryItem from '../GalleryItem/GalleryItem'
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Masonry from '@mui/lab/Masonry';
-import './GalleryList.css'
 
 function GalleryList({addLikes, galleryList, removeIMG}){
     console.log(galleryList);

@@ -38,7 +38,18 @@ function GalleryItem({item, addLikes, removeIMG, index}){
         <div id="imageItem">
             <Stack key={index}>
                 {isClick 
-                ? <p onClick={onImageClick}>{item.description}</p>
+                ? <div>
+                    <img 
+                        onClick={onImageClick}
+                        src={`${item.path}?w=160&auto=format`}
+                        srcSet={`${item.path}?w=160&auto=format&dpr=2 2x`}
+                        loading="lazy"
+                        style={{ maxWidth: 35, borderTopLeftRadius: 9, borderTopRightRadius: 9, border: '1px solid black',}}
+                    />
+                    <p onClick={onImageClick}>
+                        {item.description}
+                    </p>
+                </div>
                 : <img 
                         onClick={onImageClick}
                         src={`${item.path}?w=160&auto=format`}
@@ -73,6 +84,7 @@ function GalleryItem({item, addLikes, removeIMG, index}){
                         border={0}
                         size="small" 
                         variant="contained"
+                        onClick={onRemoveIMG}
                         sx={{
                             width: '50%',
                             borderRadius: 0, 
